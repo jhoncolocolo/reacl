@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import { Login } from './views/auth/Login';
+import { Home } from './views/auth/Home';
+import { Menu } from './components/Menu';
+import { AuthProvider, AuthRoute } from './services/auth';
+import { Roles } from './views/auth/Roles';
+import { Language } from './views/masters/Language';
+import UnauthorizedComponent from './views/auth/Unauthorized';
+import { Permissions } from './views/auth/Permissions';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HashRouter>
+          <AuthProvider>
+            <Menu/>
+            <Routes>
+              <Route path="/login" element={<Login/>}/>
+              <Route path="/unauthorized" element={<UnauthorizedComponent/>}/>
+              <Route path='/home' element={<AuthRoute route="home.index"><Home/></AuthRoute>}/>
+              <Route path='/languages'  element={ <AuthRoute route="languages.index"> <Language/></AuthRoute> } />
+              <Route path='/roles' element={<AuthRoute route="roles.index"><Roles/></AuthRoute>}/>
+              <Route path='/permissions' element={<AuthRoute route="permissions.index"><Permissions/></AuthRoute>}/>
+            </Routes>
+          </AuthProvider>
+        </HashRouter>
     </div>
   );
 }
