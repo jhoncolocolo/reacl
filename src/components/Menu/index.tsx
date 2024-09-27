@@ -14,8 +14,10 @@ function Menu(){
             <div className="container-fluid">
                 <Link to="/home" className="navbar-brand">Home</Link>
                 <Link to="/roles" className="navbar-brand">Roles</Link>
-                <Link to="/languages" className="navbar-brand">Languages</Link>
+                <Link to="/operation_types" className="navbar-brand">Operation Types</Link>
                 <Link to="/permissions" className="navbar-brand">Permissions</Link>
+                <Link to="/modules" className="navbar-brand">Modules</Link>
+                <Link to="/module_permissions" className="navbar-brand">Permission By Modules</Link>
                 <Link to="/login" className="navbar-brand">Login</Link>
                 <Link to="/login" className="navbar-brand" 
                 onClick={handleLogout}

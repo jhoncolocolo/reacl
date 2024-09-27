@@ -46,7 +46,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   const callPermissionsByUser = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/user", {
+      const response = await fetch("http://127.0.0.1:112/api/user", {
         headers: { authorization: "Bearer " + localStorage.getItem("token") },
       });
 
@@ -114,6 +114,8 @@ function AuthRoute({
 
   useEffect(() => {
     if (infoCookie && infoCookie.permissions && infoCookie.permissions.length > 0) {
+      console.log("Mis permisos son");
+      console.log(infoCookie.permissions);
       if (!IsAllow(infoCookie.permissions, route)) {
         navigate("/unauthorized");
       }

@@ -1,12 +1,16 @@
 class GenericModel<T> {
     private baseURL: string;
-  
-    constructor(baseURL: string) {
-      this.baseURL = baseURL;
+    private resourcePath: string;
+
+    constructor(resourcePath: string) {
+      this.baseURL = process.env.REACT_APP_API_BASE_URL || '';
+      this.resourcePath = resourcePath;
     }
   
     private async request(path: string, method: string, params?: any): Promise<T> {
-        const url = new URL(`${this.baseURL}/${path}`);
+      console.log("Mi base URL");
+      console.log(`${this.baseURL}`);
+        const url = new URL(`${this.baseURL}/${this.resourcePath}/${path}`);
         const headers = new Headers();
     
         // Obtener token de la cookie o de cualquier otra forma que estés manejando

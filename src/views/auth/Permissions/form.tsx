@@ -9,7 +9,7 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ id,closeModal  }) => {
-    const api = new GenericModel<Permission>('http://127.0.0.1:8000/api/permissions');
+    const api = new GenericModel<Permission>('api/permissions');
     const [permission, setPermission] = React.useState<Permission>({
         id: 0,
         name: "",

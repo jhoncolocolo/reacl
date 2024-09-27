@@ -1,0 +1,35 @@
+.module__container{
+    display:flex;
+    border: 1px solid #CCCCCC;
+}
+
+
+.module__data_main {
+    display: flex;
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    flex-direction: column; /* Apilar elementos verticalmente */
+}
+
+.module__data_main label {
+    width: 100%; /* Ocupar todo el ancho */
+}
+
+.module__data_main button {
+    width: 100%; /* Ocupar todo el ancho */
+}
+
+.module__data_permission{
+    
+}
+
+.module__data_permission_container{
+    display:flex;
+}
+
+.module__data_permission_name{
+    background-color: blue;
+}
+.module__data_permission_delete{
+    background-color: red;
+}

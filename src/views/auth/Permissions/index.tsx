@@ -9,7 +9,7 @@ import { Form } from "./form";
 
 const Permissions: React.FC = () =>{
     const auth = useAuth();
-    const api = useMemo(() => new GenericModel<Permission>('http://127.0.0.1:8000/api/permissions'), []); // para evitar que la referencia a 'api' cambie en cada render.
+    const api = useMemo(() => new GenericModel<Permission>('api/permissions'), []); // para evitar que la referencia a 'api' cambie en cada render.
     const [permissions,setPermissions] = useState<Permission[]>([]);
     const [selectedPermission,setSelectedPermission] = useState<number>(0);
     const [loading, setLoading] = useState(false);
