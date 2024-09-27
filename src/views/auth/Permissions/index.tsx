@@ -8,6 +8,7 @@ import './index.css';
 import { Form } from "./form";
 
 const Permissions: React.FC = () =>{
+    console.log("Estoy en el Index de Permissions");
     const auth = useAuth();
     const api = useMemo(() => new GenericModel<Permission>('api/permissions'), []); // para evitar que la referencia a 'api' cambie en cada render.
     const [permissions,setPermissions] = useState<Permission[]>([]);

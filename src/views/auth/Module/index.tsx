@@ -3,6 +3,7 @@ import { Module } from "../../../models/masters/module";
 import GenericModel from "../../../http/generic-model";
 
 const Modules :React.FC = () =>{
+    console.log("Estoy en el Index de Modules");
     const api = React.useMemo(() => new GenericModel<Module>('api/modules'), []); // in order to avoid that change the reference if reload the page    
     const [modules,setModules] = React.useState<Module[]>([]);
     const [loading,setLoading] = React.useState<Boolean>(false);

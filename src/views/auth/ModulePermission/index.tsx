@@ -6,6 +6,7 @@ import { modulePermissionApi, permissionApi, moduleApi } from "../../../http/api
 import ModulePermissionsUI from "./indexUI";
 
 const ModulePermissions : React.FC = () =>{
+    console.log("Estoy en la Vista ModulePermissions");
     const [modulePermissions, setModulePermissions] = React.useState<ModulePermission[]>([]);
     const [permissions, setPermissions] = React.useState<Permission[]>([]);
     const [modules, setModules] = React.useState<Module[]>([]);

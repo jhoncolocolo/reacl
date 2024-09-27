@@ -19,7 +19,7 @@ function Login(){
 
     const sendCredentials = async (e :SyntheticEvent) => {
         e.preventDefault();
-        await fetch('http://127.0.0.1:112/api/login', {
+        await fetch(process.env.REACT_APP_API_BASE_URL+'/api/login', {
             method:"POST",
             credentials:'include',
             headers:{'Content-Type':'application/json'},
@@ -32,7 +32,7 @@ function Login(){
             return response.json();
         })
         .then(data => {
-            console.log("Me autentique en el loigin");
+            //console.log("Me autentique en el login");
             auth.login(data.message);
         })
         .catch((error) => {
@@ -44,6 +44,7 @@ function Login(){
             // Puedes manejarlo de otras maneras, como mostrar una notificación, redireccionar, etc.
             } else {
             // Otro tipo de error, puedes manejarlo según tus necesidades
+            alert('Aqui entro en otro error del Login')
             }
         });
     };

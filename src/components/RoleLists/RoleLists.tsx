@@ -10,7 +10,7 @@ const RoleLists: React.FC = () =>{
     const auth = useAuth();
     const [permissions,setPermissions] = useState<RolePermissionAuth[]>([]);
     useEffect(()=>{
-        console.log("estpy en el trinis");
+        console.log("Estoy en la Lista de Roles");
         const userString = localStorage.getItem('user_info');
         const user: RequestAuth | null = userString ? JSON.parse(userString) : null;
         if(user){

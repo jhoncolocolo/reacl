@@ -8,8 +8,6 @@ class GenericModel<T> {
     }
   
     private async request(path: string, method: string, params?: any): Promise<T> {
-      console.log("Mi base URL");
-      console.log(`${this.baseURL}`);
         const url = new URL(`${this.baseURL}/${this.resourcePath}/${path}`);
         const headers = new Headers();
     

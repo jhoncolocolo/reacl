@@ -46,7 +46,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   const callPermissionsByUser = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:112/api/user", {
+      const response = await fetch(process.env.REACT_APP_API_BASE_URL+"/api/user", {
         headers: { authorization: "Bearer " + localStorage.getItem("token") },
       });
 
@@ -110,30 +110,50 @@ function AuthRoute({
 }) {
   const auth = useAuth();
   const navigate = useNavigate();
-  const infoCookie: RequestAuth | null = getPermissionsStorage();
+  const infoCookie: RequestAuth | null  = React.useMemo(() => getPermissionsStorage(), []);
+  const [isLoading, setIsLoading] = useState(true);  // Añadir estado para controlar el renderizado
 
+  console.log("Info from cookie:", infoCookie);
   useEffect(() => {
     if (infoCookie && infoCookie.permissions && infoCookie.permissions.length > 0) {
-      console.log("Mis permisos son");
-      console.log(infoCookie.permissions);
-      if (!IsAllow(infoCookie.permissions, route)) {
-        navigate("/unauthorized");
-      }
+  
+        // Agrega el siguiente log aquí para asegurarte de que la ruta es correcta
+        console.log("Evaluando permisos para la ruta:", route);
+  
+        // Agrega también el siguiente log para verificar si la función IsAllow está devolviendo el valor correcto
+        if (!IsAllow(infoCookie.permissions, route)) {
+          navigate("/unauthorized");
+        }
 
       if (!auth.user) {
         auth.assignUserAuth(infoCookie, false);
       }
+
+      // Una vez que se hace la validación, se deja de cargar
+      setIsLoading(false);
     } else {
       navigate("/login");
     }
   }, [auth, infoCookie, route, navigate]);
 
+  // Mostrar un mensaje o spinner mientras se valida el permiso
+  if (isLoading) {
+    return <div>Loading...</div>;  // Puedes personalizar esto
+  }
+
   return <>{children}</>;
 }
 
 
-const IsAllow = (permissions : PermissionAuth[],route: string): boolean => {
-  return permissions.some(permission => permission.route === route);
+const IsAllow = (permissions: PermissionAuth[], route: string): boolean => {
+  const sanitizedRoute = route.trim().toLowerCase();
+
+  const hasPermission = permissions.some(
+    (permission) => permission.route.trim().toLowerCase() === sanitizedRoute
+  );
+
+  console.log(`Has permission for ${sanitizedRoute}:`, hasPermission);
+  return hasPermission;
 };
 
 
