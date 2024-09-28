@@ -17,7 +17,6 @@ const Permissions: React.FC = () =>{
     const [hasFetched, setHasFetched] = useState(false);
     
     const getPermissions = useCallback(() => {
-        console.log("getPermissions called");
         setLoading(true);
         api.getAll().then(data => {
             setPermissions(data);
@@ -34,7 +33,6 @@ const Permissions: React.FC = () =>{
     };
     
     useEffect(() => {
-        console.log("useEffect called");
         if (!loading && !hasFetched) {
             getPermissions();
             setHasFetched(true);

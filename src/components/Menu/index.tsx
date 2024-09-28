@@ -18,6 +18,7 @@ function Menu(){
                 <Link to="/permissions" className="navbar-brand">Permissions</Link>
                 <Link to="/modules" className="navbar-brand">Modules</Link>
                 <Link to="/module_permissions" className="navbar-brand">Permission By Modules</Link>
+                <Link to="/operations" className="navbar-brand">Operations</Link>
                 <Link to="/login" className="navbar-brand">Login</Link>
                 <Link to="/login" className="navbar-brand" 
                 onClick={handleLogout}

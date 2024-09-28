@@ -36,7 +36,11 @@ class GenericModel<T> {
         const response = await fetch(url.toString(), requestOptions);
     
         if (!response.ok) {
-          throw new Error(`Error ${response.status}: ${response.statusText}`);
+          if (response.status === 401) { // Check for specific 401 status code
+            console.log(`Error ${response.status}: ${response.statusText}`);
+          } else {
+            throw new Error(`Error ${response.status}: ${response.statusText}`);
+          }
         }
     
         return response.json();

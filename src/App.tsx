@@ -5,6 +5,7 @@ import { Menu } from './components/Menu';
 import { AuthProvider, AuthRoute } from './services/auth';
 import { Roles } from './views/auth/Roles';
 import { OperationType } from './views/masters/OperationType';
+import { Operation } from './views/transactions/Operation';
 import UnauthorizedComponent from './views/auth/Unauthorized';
 import { Permissions } from './views/auth/Permissions';
 import { Modules } from './views/auth/Module';
@@ -21,6 +22,7 @@ function App() {
               <Route path="/unauthorized" element={<UnauthorizedComponent/>}/>
               <Route path='/home' element={<AuthRoute route="home.index"><Home/></AuthRoute>}/>
               <Route path='/operation_types'  element={ <AuthRoute route="operation_types.index"> <OperationType/></AuthRoute> } />
+              <Route path='/operations'  element={ <AuthRoute route="operations.index"> <Operation/></AuthRoute> } />
               <Route path='/roles' element={<AuthRoute route="roles.index"><Roles/></AuthRoute>}/>
               <Route path='/permissions' element={<AuthRoute route="permissions.index"><Permissions/></AuthRoute>}/>
               <Route path='/modules' element={<AuthRoute route="modules.index"><Modules/></AuthRoute>}/>

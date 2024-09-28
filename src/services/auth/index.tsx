@@ -105,42 +105,77 @@ function AuthRoute({
   children,
   route,
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
   route: string;
 }) {
   const auth = useAuth();
   const navigate = useNavigate();
-  const infoCookie: RequestAuth | null  = React.useMemo(() => getPermissionsStorage(), []);
-  const [isLoading, setIsLoading] = useState(true);  // Añadir estado para controlar el renderizado
-
-  console.log("Info from cookie:", infoCookie);
+  const infoCookie: RequestAuth | null = getPermissionsStorage();
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasPermission, setHasPermission] = useState(false);
   useEffect(() => {
-    if (infoCookie && infoCookie.permissions && infoCookie.permissions.length > 0) {
-  
-        // Agrega el siguiente log aquí para asegurarte de que la ruta es correcta
+
+    const evaluatePermissions = () => {
+      // Reinicia el estado de permisos
+      setHasPermission(false);
+      setIsLoading(true);
+
+      if (infoCookie && infoCookie.permissions && infoCookie.permissions.length > 0) {
         console.log("Evaluando permisos para la ruta:", route);
-  
-        // Agrega también el siguiente log para verificar si la función IsAllow está devolviendo el valor correcto
-        if (!IsAllow(infoCookie.permissions, route)) {
+
+        const isAllowed = IsAllow(infoCookie.permissions, route);
+        console.log(`Tiene permiso para ${route}:`, isAllowed);
+
+        // Si no tiene permisos, redirige inmediatamente
+        if (!isAllowed) {
+          console.log("Sin permiso, redirigiendo a /unauthorized");
           navigate("/unauthorized");
+          return; // Evita continuar ejecutando si no tiene permiso
         }
 
-      if (!auth.user) {
-        auth.assignUserAuth(infoCookie, false);
+        // Si tiene permiso, lo permite
+        setHasPermission(true);
+
+        // Asigna al usuario autenticado si no está en el contexto
+        if (!auth.user) {
+          auth.assignUserAuth(infoCookie, false);
+        }
+      } else {
+        // Si no hay sesión válida, redirige al login
+        console.log("Sin sesión válida, redirigiendo a /login");
+        navigate("/login");
       }
 
-      // Una vez que se hace la validación, se deja de cargar
       setIsLoading(false);
-    } else {
-      navigate("/login");
-    }
+    };
+    evaluatePermissions();
+
+    // Función de limpieza para restablecer el estado cuando el componente se desmonta
+    return () => {
+      setHasPermission(false);
+      setIsLoading(false);
+    };
+
   }, [auth, infoCookie, route, navigate]);
 
-  // Mostrar un mensaje o spinner mientras se valida el permiso
+  
+  // Mostrar pantalla de carga si aún no se han evaluado los permisos
   if (isLoading) {
-    return <div>Loading...</div>;  // Puedes personalizar esto
+    return <div>Loading...</div>;
   }
 
+  // No renderizar el contenido si no tiene permiso
+  if (!hasPermission) {
+    return null; // Evita el renderizado si no tiene permiso
+  }else{
+    if (infoCookie && infoCookie.permissions && infoCookie.permissions.length > 0) {
+      if (!IsAllow(infoCookie.permissions, route)) {
+        return null; // Evita el renderizado si no tiene permiso
+      }
+    }
+  }
+
+  // Renderiza el componente hijo si todo está en orden
   return <>{children}</>;
 }
 
