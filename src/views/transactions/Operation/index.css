@@ -1,0 +1,221 @@
+/**
+ * Operation.css
+ * @Date 2024-09-30
+ * @commit feat: Add connection with backend for import files
+ * @description: Implementation of css styles fro improve view
+ * @author jhoncolocolo
+ * @version 1.0
+ */
+
+.btn-responsive-smoll-top-rigth, .btn-responsive-smoll-top-rigth-with-search {
+    display: none;
+}
+.btn-responsive-smoll-bottom-rigth {
+    position: fixed;
+    width: 45px;
+    right: 50px;
+    bottom: 20px;
+    z-index: 2;
+    background: #f19d02;
+    color: white;
+    height: 45px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+.btns-actions button:first-child {
+    margin-left: -6px;
+}
+.btns-actions button:nth-child(2) {
+    margin-left: 6px;
+}
+.btn-actions {
+    display: flex;
+}
+.btn-actions .btn {
+    border: 1px solid;
+    border-radius: 5px;
+    background: #485a70;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-actions .btn > a {
+    font-size: 1.6em;
+}
+.btn-actions .edit-action {
+    margin-right: 3%;
+}
+.btn-actions .lift-restriction-action {
+    margin-left: 3%;
+}
+.btns-actions-tree-buttons button:first-child {
+    margin-left: -6px;
+}
+.btns-actions-tree-buttons button:nth-child(2) {
+    margin-left: 6px;
+}
+.btns-actions-tree-buttons button:nth-child(3) {
+    margin-left: 6px;
+}
+.table-list-2-columns, .table-list-3-columns, .table-list-4-columns, .table-list-6-columns, .table-list-7-columns, .table-list-8-columns, .table-list-9-columns, .table-list-10-columns {
+    margin: 1% 5%;
+}
+.table-list-5-columns{
+    margin: 1% 8%;
+}
+.table-list-11-columns, .table-list-12-columns {
+    margin: 2% 10%;
+    width: 80%;
+}
+.table-list-8-columns table, .table-list-5-columns table, .table-list-12-columns table {
+    width: 100%;
+    margin-bottom: 1.25em;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.table-list-8-columns table tr th, .table-list-5-columns table tr th, .table-list-12-columns table tr th {
+    padding: 0.5625em 0.625em;
+    font-size: 0.875em;
+    color: #ddd;
+    border: 1px solid #ddd;
+    background-color: #485a70;
+}
+.table-list-8-columns table tr td, .table-list-5-columns table tr td, .table-list-12-columns table tr td {
+    padding: 0.5625em 0.625em;
+    font-size: 0.875em;
+    color: #222;
+    border: 1px solid #ddd;
+}
+.table-list-8-columns table tr:nth-of-type(even), .table-list-5-columns table tr:nth-of-type(even), .table-list-12-columns table tr:nth-of-type(even) {
+    background: #f9f9f9;
+}
+.table-list-8-columns table tr.even, .table-list-5-columns table tr.even, .table-list-12-columns table tr.even {
+    background: #f9f9f9;
+}
+.table-list-8-columns table tr.alt, .table-list-5-columns table tr.alt, .table-list-12-columns table tr.alt {
+    background: #f9f9f9;
+}
+.align-button-col-6 {
+    display: flex;
+    text-align: center;
+    align-content: space-between;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .table-list-2-columns, .table-list-3-columns, .table-list-4-columns, .table-list-6-columns, .table-list-7-columns, .table-list-8-columns, .table-list-9-columns, .table-list-10-columns {
+        margin: 2% 4%;
+   }
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .table-list-2-columns, .table-list-3-columns, .table-list-4-columns, .table-list-6-columns, .table-list-7-columns {
+        margin: 1% 3%;
+   }
+    .table-list-8-columns, .table-list-5-columns {
+        margin: 1% 3%;
+   }
+    .table-list-9-columns, .table-list-10-columns, .table-list-11-columns, .table-list-12-columns {
+        margin: 1% 4%;
+        width: 94%;
+   }
+    .table-list-8-columns table.resp, .table-list-5-columns table.resp, .table-list-12-columns table.resp {
+        display: block;
+        border: none;
+   }
+    .table-list-8-columns .resp thead, .table-list-5-columns .resp thead, .table-list-12-columns .resp thead {
+        display: block;
+   }
+    .table-list-8-columns .resp thead tr, .table-list-5-columns .resp thead tr, .table-list-12-columns .resp thead tr {
+        display: none;
+   }
+    .table-list-8-columns .resp tbody, .table-list-5-columns .resp tbody, .table-list-12-columns .resp tbody {
+        display: block;
+   }
+    .table-list-8-columns .resp tbody tr, .table-list-5-columns .resp tbody tr, .table-list-12-columns .resp tbody tr {
+        margin: 1em 0;
+        border: 1px solid #2ba6cb;
+   }
+    .table-list-8-columns .resp tbody tr td, .table-list-5-columns .resp tbody tr td, .table-list-12-columns .resp tbody tr td {
+        padding-left: 25%;
+   }
+    .table-list-8-columns .resp tr, .table-list-5-columns .resp tr, .table-list-12-columns .resp tr {
+        display: block;
+   }
+    .table-list-8-columns .resp tr td:last-child, .table-list-5-columns .resp tr td:last-child, .table-list-12-columns .resp tr td:last-child {
+        border-bottom: 1px double #ddd;
+   }
+    .table-list-8-columns .resp tr:last-child td:last-child, .table-list-5-columns .resp tr:last-child td:last-child, .table-list-12-columns .resp tr:last-child td:last-child {
+        border: none;
+   }
+    .table-list-8-columns .resp th, .table-list-5-columns .resp th, .table-list-12-columns .resp th {
+        display: block;
+   }
+    .table-list-8-columns .resp td, .table-list-5-columns .resp td, .table-list-12-columns .resp td {
+        display: block;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        padding-left: 45%;
+        text-align: left;
+   }
+    .table-list-8-columns .resp td:before, .table-list-5-columns .resp td:before, .table-list-12-columns .resp td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+   }
+    .table-list-8-columns .resp caption, .table-list-5-columns .resp caption, .table-list-12-columns .resp caption {
+        display: block;
+   }
+    .btn-responsive-smoll-top-rigth {
+        display: block;
+        position: fixed;
+        width: 70px;
+        right: 10px;
+        top: 75px;
+        z-index: 1;
+   }
+    .btn-responsive-smoll-top-rigth-with-search {
+        display: block;
+        position: fixed;
+        width: 70px;
+        right: 10px;
+        top: 67px;
+        z-index: 1;
+   }
+    .btn-responsive-smoll-bottom-rigth {
+        width: 30px;
+        right: 10px;
+        bottom: 30px;
+        height: 30px;
+        font-size: 1em;
+   }
+    .btn-actions {
+        display: flex;
+   }
+    .btn-actions .btn {
+        width: 30px;
+        height: 30px;
+   }
+    .btn-actions .btn > a {
+        font-size: 1em;
+   }
+    .btn-actions .edit-action {
+        margin-right: 4%;
+   }
+    .btn-actions .lift-restriction-action {
+        margin-left: 4%;
+   }
+}
